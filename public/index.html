@@ -1,0 +1,28 @@
+<!-- public/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Plant Chatbot</title>
+</head>
+
+<body>
+    <h1>Chatbot Nhận Diện Thực Vật</h1>
+
+    <div>
+        <input type="text" id="textInput" placeholder="Nhập mô tả thực vật...">
+        <button onclick="sendText()">Gửi</button>
+    </div>
+
+    <div>
+        <input type="file" id="imageInput" accept="image/*">
+        <button onclick="sendImage()">Upload Ảnh</button>
+    </div>
+
+    <div id="response"></div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

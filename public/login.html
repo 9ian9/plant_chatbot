@@ -1,0 +1,49 @@
+<!-- public/login.html -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Đăng nhập</title>
+</head>
+
+<body>
+    <h1>Đăng nhập Chatbot Thực Vật</h1>
+
+    <form id="loginForm">
+        <label>Tên đăng nhập: <input type="text" id="username" required></label><br>
+        <label>Mật khẩu: <input type="password" id="password" required></label><br>
+        <button type="submit">Đăng nhập</button>
+    </form>
+
+    <p id="message" style="color: red;"></p>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', async(e) => {
+            e.preventDefault();
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            const res = await fetch('/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    username,
+                    password
+                })
+            });
+
+            const data = await res.json();
+
+            if (data.success) {
+                window.location.href = '/index.html'; // Điều hướng khi thành công
+            } else {
+                document.getElementById('message').innerText = data.message;
+            }
+        });
+    </script>
+</body>
+
+</html>
